@@ -32,9 +32,9 @@ public class Ex03_for개념 {
 		int odd = 0;
 		for(int t = 1; t<=10; t++) {
 			if(t%2==0) {
-				even+=t;
+				even += t;	//짝수
 			}else {
-				odd += t;
+				odd += t;	//홀수
 			}
 		}
 		System.out.print("1부터 10까지의 홀수의 합 : " + odd);
@@ -42,19 +42,19 @@ public class Ex03_for개념 {
 		
 		//민수님
 		int sum1 = 0;
-		for(int i =1; i<11; i+=2) {
+		for(int i =1; i<=10; i+=2) {
 			sum1 += i;
 		}
 		System.out.println("1부터 10까지의 홀수의 합 : " + sum1);
 	
 		//한철님
-		int aa=0;
+		int sum2=0;
 		for (int i=1; i<=10; i++) {
 			if(i%2==1) {
-				aa+=i;
+				sum2+=i;
 			}
 		}
-		System.out.println("1부터 10까지의 홀수의 합 : " +aa);
+		System.out.println("1부터 10까지의 홀수의 합 : " + sum2);
 			
 		
 		
