@@ -10,8 +10,10 @@ public class Ex05_로또 {
 			lotto[i] = (int) (Math.random()*45) + 1;
 		}
 		//버블정렬
-		for(int i = lotto.length-1; i>0 ;i--) {
-			for(int j =0; j<i; j++) {
+		for(int i = lotto.length-1; i>0 ;i--) { 
+			//0~ (i-1)까지 반복
+			for(int j =0; j<i; j++) {	
+				// j번째와 j+1번째의 요소가 크기순이 아니면 교환
 				if(lotto[j] > lotto[j+1]) {
 					int temp =lotto[j];
 					lotto[j] = lotto[j+1];
