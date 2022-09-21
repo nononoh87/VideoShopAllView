@@ -12,7 +12,7 @@ public class Ex04_성적 {
 		int num = sc.nextInt();
 		System.out.println();
 
-		int[][] score = new int[num][3]; // 점수 입력받을 배열
+		int[][] score = new int[num][4]; // 점수 입력받을 배열
 		int st_sum = 0; // 학생별 총점
 
 		//점수 입력

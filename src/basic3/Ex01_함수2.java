@@ -12,6 +12,6 @@ public class Ex01_함수2 {
 	static int add() {
 		int a = 10, b = 20;
 		int sum = a + b;
-		return sum; //7번째 줄 int sum =add(); 다시 받아서 sum 값을 출력
+		return sum; //7번째 줄 int sum = add(); 다시 받아서 sum 값을 출력
 	}
 }
