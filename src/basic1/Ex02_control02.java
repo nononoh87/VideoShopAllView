@@ -11,7 +11,7 @@ public class Ex02_control02 {
 
 		String id = input.nextLine();
 
-		String year = id.substring(0, 4);
+		String year = id.substring(0, 4); //(substring은 4열 앞까지 잘라준다. 3열까지 출력)
 
 		char college = id.charAt(4);
 
@@ -22,7 +22,7 @@ public class Ex02_control02 {
 			aa = "사회대";
 
 		String c;
-		c = id.substring(5, 7);
+		c = id.substring(5, 7);	//(substring은 7열 앞까지 잘라준다. 5,6열까지 출력)
 		int cc = Integer.parseInt(c);
 
 		String cal = null;

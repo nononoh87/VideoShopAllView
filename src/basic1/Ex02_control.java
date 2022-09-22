@@ -8,6 +8,7 @@ import java.util.Scanner;
  * 
  * 		1) if
  * 		2) switch
+ * 		
  * 		3) for
  * 		4) while / do~while
  * 
@@ -64,10 +65,10 @@ public class Ex02_control {
 		System.out.println(home + "출신");
 		*/
 		//String id ="870128-1234567"
-		String nai = id.substring(0, 2); //nai ="80"
+		String nai = id.substring(0, 2); //nai ="87" (substring은 2열 앞까지 잘라준다는 말)
 		//문자열 -> 정수 변환
 		//int sunai = (int)nai;
-		int sunai = Integer.parseInt(nai);	//sunai = 80
+		int sunai = Integer.parseInt(nai);	//sunai = 87
 		
 		int age = 0;
 		

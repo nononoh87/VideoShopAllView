@@ -4,8 +4,9 @@ package basic1;
  * 1. 기본형
  * 		boolean
  * 		char
+ * 		byte/short
  * 		int /long
- * 		double
+ * 		float/double
  * 
  * 2. 참조형
  * 		'클래스
