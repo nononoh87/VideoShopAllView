@@ -6,6 +6,8 @@ public class Bank {
 	String name ;
 	String account ;
 	int balance ;
+	int input;  
+	int output;	
 	
 	Bank(){}
 	
@@ -23,7 +25,7 @@ public class Bank {
 			balance = balance - output;
 			System.out.println("인출한 금액은" + output);
 		}
-	}// inchul
+	}
 
 	public void ipgum(int input) {
 
@@ -46,18 +48,15 @@ public class Bank {
 		String scc1 = sc.nextLine();
 		System.out.println("잔액을 입력하세요. : ");
 		int scc2 =sc.nextInt();
-		// s입금받는거
-		//  s
-		
-		// c츄ㅜㄹ금
-		// c
-		
+		System.out.println("인출한 금액은");
+		int scc3 =sc.nextInt();
+		System.out.println("입금한 금액은");
+		int scc4 =sc.nextInt();
 		
 		Bank b2 = new Bank(scc,scc1,scc2);
 		System.out.println(b2.toString());
-		b2.ipgum(10);
-		b2.inchul(15);
-	
+		b2.inchul(scc3);
+		b2.ipgum(scc4);
 	}
 
 }
