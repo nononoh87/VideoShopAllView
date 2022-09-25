@@ -33,7 +33,6 @@ public class Bank {
 		System.out.println("입금한 금액은" + input);
 	}
 	
-	
 	@Override
 	public String toString() {
 		return ("예금주 : " + name + ", " + "계좌번호 : " + account + ", " + " 잔액 : " + balance);
@@ -48,9 +47,9 @@ public class Bank {
 		String scc1 = sc.nextLine();
 		System.out.println("잔액을 입력하세요. : ");
 		int scc2 =sc.nextInt();
-		System.out.println("인출한 금액은");
+		System.out.println("인출한 금액을 입력하세요. : ");
 		int scc3 =sc.nextInt();
-		System.out.println("입금한 금액은");
+		System.out.println("입금한 금액을 입력하세요. : ");
 		int scc4 =sc.nextInt();
 		
 		Bank b2 = new Bank(scc,scc1,scc2);
