@@ -8,7 +8,7 @@ class aArrayListEx1
 {
 	public static void main(String[] args) 
 	{
-/*	ArrayList result = dataSet();
+	/*ArrayList result = dataSet();
 		
 		
 		// dataSet() 안의 변수 값들을 여기서 출력한다면??
@@ -32,9 +32,7 @@ class aArrayListEx1
 		obj[0] = name;
 		obj[1] = age;
 		obj[2] = height;
-	//	return obj;
-*/
-
-
+		//return obj;
+		*/
 	}
 }

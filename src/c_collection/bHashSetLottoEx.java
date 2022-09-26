@@ -4,7 +4,7 @@ import java.util.*;
 
 public class bHashSetLottoEx {
 	public static void main(String[] args) {
-		HashSet<Integer> lottos = new HashSet<Integer>(); 
+		HashSet<Integer> lottos = new HashSet<Integer>();
 
 		// for (int i = 0; i < 6; i++) {
 		while (lottos.size() < 6) {
@@ -13,7 +13,7 @@ public class bHashSetLottoEx {
 		}
 
 		System.out.println(lottos);
-		
+
 		ArrayList list = new ArrayList(lottos);
 		Collections.sort(list);
 		System.out.println();

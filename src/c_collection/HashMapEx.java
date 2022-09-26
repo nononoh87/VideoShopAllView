@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class HashMapEx {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		
-		//map의 형식은 key와 value 쌍으로 존재한다. Value는 중복되도 상관지만 key는 중복되면 안됨.
+
+		// map의 형식은 key와 value 쌍으로 존재한다. Value는 중복되도 상관지만 key는 중복되면 안됨.
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("javassem", "1111");
 		// map.put("javassem", "1234"); // 위의 javassem/1111을 덮어버림?
