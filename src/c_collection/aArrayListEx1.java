@@ -1,8 +1,7 @@
 
 package c_collection;
-import java.util.ArrayList;
 
-import com.sun.net.httpserver.Authenticator.Result;
+import java.util.ArrayList;
 
 class aArrayListEx1
 {
