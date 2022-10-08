@@ -17,7 +17,6 @@ FROM employee
 WHERE salary between 2000 and 3000
 ORDER BY ename asc;
 
-
 --[문항2]
 --커미션이 NULL 인 사원이름과, 입사일 부서번호를 출력하되 부서번호를 오를차순 정렬하되 부서번호가 같은 항목이 있을 경우 이름을 오름차순으로 정렬하세요.
 SELECT 	  ename, hiredate, dno, commission
