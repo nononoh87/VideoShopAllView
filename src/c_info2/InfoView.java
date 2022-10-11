@@ -139,15 +139,42 @@ public class InfoView {
 				deleteByTel();
 			}
 		});
+		bExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModifyByTel();
+				selectAll(); // 바로 수정된것이 바로 보이게끔함.
+			}
+		});
+		
 	}// eventProc()
+	void ModifyByTel() {
+		// (1) 입력한 전화번화값 얻어오기
+		String tel = tfTel.getText();
+		InfoVO vo = new InfoVO();
+		
+		// (2) 모델단에 ModifyByTel() 호출
+		try {
+			tfName.setText(vo.getName());
+			tfID.setText(vo.getId());
+			tfTel.setText(vo.getTel());
+			tfGender.setText(vo.getGender());
+			tfAge.setText(String.valueOf(vo.getAge()));
+			tfHome.setText(vo.getHome());			
+			model.modify(vo);
+		} catch (SQLException ex) {
+			ta.setText("수정 실패 :" + ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
 
 	void deleteByTel() {
 		// (1) 입력한 전화번화값 얻어오기
 		String tel = tfTel.getText();
 		// (2) 모델단에 deleteByTel() 호출
 		try {
-			model.delete(tel);
+			int res = model.delete(tel);
 			// (3) 화면을 지우고
+			ta.setText(res + "delete --");
 			clearText();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -162,11 +189,11 @@ public class InfoView {
 			InfoVO vo = model.selectByTel(tel);
 			// (3) 받은 결과를 각각의 텍스트 필드에 지정 (출력)
 			tfName.setText(vo.getName());
-			// tfName, tfID, tfTel, tfGender, tfAge, tfHome;
+			
 			tfID.setText(vo.getId());
 			tfTel.setText(vo.getTel());
 			tfGender.setText(vo.getGender());
-			tfAge.setText(vo.getName());
+			tfAge.setText(String.valueOf(vo.getAge()));
 			tfHome.setText(vo.getHome());
 		} catch (Exception ex) {
 			ta.setText("전화번호를 검색 실패 :" + ex.getMessage());
@@ -192,7 +219,7 @@ public class InfoView {
 		String id = tfID.getText();
 		String tel = tfTel.getText();
 		String gender = tfGender.getText();
-		int age = Integer.parseInt(tfAge.getText());
+		int age = Integer.valueOf(tfAge.getText());
 		String home = tfHome.getText();
 		// (2) 1번의 값들을 InfoVO에 지정 - (1) 생성자 (2) setter
 		InfoVO vo = new InfoVO();

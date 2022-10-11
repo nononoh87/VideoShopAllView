@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class InfoModelImpl implements InfoModel {
+public class InfoModelImpl implements InfoModel { // implements : 부모의 메소드를 반드시 오버라이딩(재정의)해야 한다.
 
 	// final로 선언한 경우 변수 부분 대문자로 표기
 	final static String DRIVER = "oracle.jdbc.driver.OracleDriver";
@@ -17,7 +17,7 @@ public class InfoModelImpl implements InfoModel {
 
 	public InfoModelImpl() throws ClassNotFoundException {
 		// 1. 드라이버 로딩
-		Class.forName(DRIVER);
+		Class.forName(DRIVER); // Class.forName() 을 이용해서 드라이버 로드
 		System.out.println("드라이버로딩 성공");
 	}
 
@@ -27,10 +27,10 @@ public class InfoModelImpl implements InfoModel {
 	@Override
 	public void insertInfo(InfoVO vo) throws SQLException {
 		// 2. 연결객체 얻어오기
-		Connection con = null;
-		PreparedStatement ps = null;
+		Connection con = null; // Connection 데이터베이스와 연결하는 객체.
+		PreparedStatement ps = null; // PreparedStatement
 		try {
-			con = DriverManager.getConnection(URL, USER, PASS);
+			con = DriverManager.getConnection(URL, USER, PASS); // (연결문자열, USER, PASS) 으로 Connection 객체를 생성합니다.
 
 			// 3. sql 문장 (#)
 			String sql = " INSERT INTO info_tab (name, jumin, tel, gender, age, home)      " + " VALUES(?,?,?,?,?,?)";
@@ -64,7 +64,7 @@ public class InfoModelImpl implements InfoModel {
 		// 2. 연결객체 얻어오기
 		Connection con = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
+		ResultSet rs = null; // ResultSet 객체를 반환한다.
 		try {
 			con = DriverManager.getConnection(URL, USER, PASS);
 
@@ -138,8 +138,58 @@ public class InfoModelImpl implements InfoModel {
 
 	@Override
 	public int delete(String tel) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		// 2. 연결객체 얻어오기
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = DriverManager.getConnection(URL, USER, PASS);
+			// 3.sql 문장
+			String sql = "DELETE FROM info_tab WHERE tel=?";
+			// 4. 정송객체 얻어오기
+			ps = con.prepareStatement(sql);
+			ps.setString(1, tel);
+			// 5. 전송
+			int a = ps.executeUpdate();
+			return a;
+
+		} finally {
+			// 6. 닫기 (필수) : Connection 의 갯수는 사용하는 사용자의 수보다
+			ps.close();
+			con.close();
+		}
+
 	}
 
-}// infoModelImpl
+	@Override
+	public int modify(InfoVO vo) throws SQLException {
+		// 2. 연결객체 얻어오기
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = DriverManager.getConnection(URL, USER, PASS);
+			// 3.sql 문장
+			String sql = "UPDATE info_tab SET name = ?, jumin = ?, gender = ?, age = ?, home = ? WHERE tel=?";
+			// 4. 전송객체 얻어오기
+			ps = con.prepareStatement(sql);
+			
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getId());
+			ps.setString(3, vo.getGender());
+			ps.setInt(4, vo.getAge());
+			ps.setString(5, vo.getHome());
+			ps.setString(6, vo.getTel());
+
+			
+			// 5. 전송
+			int a = ps.executeUpdate();
+			return a;
+
+		} finally {
+			// 6. 닫기 (필수) : Connection 의 갯수는 사용하는 사용자의 수보다
+			ps.close();
+			con.close();
+		}
+	}
+
+}
+// infoModelImpl
