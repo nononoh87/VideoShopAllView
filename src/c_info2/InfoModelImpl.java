@@ -161,35 +161,31 @@ public class InfoModelImpl implements InfoModel { // implements : 부모의 메�
 	}
 
 	@Override
-	public int modify(InfoVO vo) throws SQLException {
+	public void modify(InfoVO vo) throws SQLException {
 		// 2. 연결객체 얻어오기
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
 			con = DriverManager.getConnection(URL, USER, PASS);
-			// 3.sql 문장
+			// 3. sql 문장
 			String sql = "UPDATE info_tab SET name = ?, jumin = ?, gender = ?, age = ?, home = ? WHERE tel=?";
 			// 4. 전송객체 얻어오기
 			ps = con.prepareStatement(sql);
-			
 			ps.setString(1, vo.getName());
 			ps.setString(2, vo.getId());
 			ps.setString(3, vo.getGender());
-			ps.setInt(4, vo.getAge());
+			ps.setString(4, Integer.toString(vo.getAge()));
 			ps.setString(5, vo.getHome());
 			ps.setString(6, vo.getTel());
 
-			
 			// 5. 전송
-			int a = ps.executeUpdate();
-			return a;
+			ps.executeUpdate();
 
 		} finally {
 			// 6. 닫기 (필수) : Connection 의 갯수는 사용하는 사용자의 수보다
 			ps.close();
 			con.close();
 		}
-	}
+	}// end of modify()
 
-}
-// infoModelImpl
+}// infoModelImpl

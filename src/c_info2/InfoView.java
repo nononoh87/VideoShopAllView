@@ -12,7 +12,7 @@ public class InfoView {
 
 //	1. 멤버 변수 선언
 	JFrame f;
-	JTextField tfName, tfID, tfTel, tfGender, tfAge, tfHome;
+	JTextField tfName, tfId, tfTel, tfGender, tfAge, tfHome;
 	JTextArea ta;
 	JButton bAdd, bShow, bSearch, bDelete, bCancel, bExit;
 	ImageIcon image;
@@ -27,7 +27,7 @@ public class InfoView {
 
 		// 동쪽 입력값
 		tfName = new JTextField(20);
-		tfID = new JTextField(20);
+		tfId = new JTextField(20);
 		tfTel = new JTextField(20);
 		tfGender = new JTextField(20);
 		tfAge = new JTextField(20);
@@ -79,7 +79,7 @@ public class InfoView {
 		tfWest.add(new JLabel("Name", JLabel.CENTER));
 		tfWest.add(tfName);
 		tfWest.add(new JLabel("ID", JLabel.CENTER));
-		tfWest.add(tfID);
+		tfWest.add(tfId);
 		tfWest.add(new JLabel("Tel", JLabel.CENTER));
 		tfWest.add(tfTel);
 		tfWest.add(new JLabel("Sex", JLabel.CENTER));
@@ -148,22 +148,32 @@ public class InfoView {
 		
 	}// eventProc()
 	void ModifyByTel() {
-		// (1) 입력한 전화번화값 얻어오기
+		// (1) 사용자 입력값 얻어오기
+		String name = tfName.getText();
+		String id = tfId.getText();
 		String tel = tfTel.getText();
-		InfoVO vo = new InfoVO();
+		String gender = tfGender.getText();
+		int age = Integer.parseInt(tfAge.getText());
+		String home = tfHome.getText();
+		
 		
 		// (2) 모델단에 ModifyByTel() 호출
-		try {
-			tfName.setText(vo.getName());
-			tfID.setText(vo.getId());
-			tfTel.setText(vo.getTel());
-			tfGender.setText(vo.getGender());
-			tfAge.setText(String.valueOf(vo.getAge()));
-			tfHome.setText(vo.getHome());			
+		InfoVO vo = new InfoVO(name, id, tel, gender, age, home);
+		vo.setName(name);
+		vo.setId(id);
+		vo.setTel(tel);
+		vo.setGender(gender);
+		vo.setAge(age);
+		vo.setHome(home);
+		
+		try {			
 			model.modify(vo);
-		} catch (SQLException ex) {
-			ta.setText("수정 실패 :" + ex.getMessage());
-			ex.printStackTrace();
+			
+		// (3) 화면을 지우고
+			clearText();
+		} catch (SQLException e) {
+			ta.setText("수정 실패 :" + e.getMessage());
+			//e.printStackTrace();
 		}
 	}
 
@@ -190,7 +200,7 @@ public class InfoView {
 			// (3) 받은 결과를 각각의 텍스트 필드에 지정 (출력)
 			tfName.setText(vo.getName());
 			
-			tfID.setText(vo.getId());
+			tfId.setText(vo.getId());
 			tfTel.setText(vo.getTel());
 			tfGender.setText(vo.getGender());
 			tfAge.setText(String.valueOf(vo.getAge()));
@@ -216,7 +226,7 @@ public class InfoView {
 	void insertData() {
 		// (1) 사용자입력값 얻어오기
 		String name = tfName.getText();
-		String id = tfID.getText();
+		String id = tfId.getText();
 		String tel = tfTel.getText();
 		String gender = tfGender.getText();
 		int age = Integer.valueOf(tfAge.getText());
@@ -243,7 +253,7 @@ public class InfoView {
 
 	void clearText() {
 		tfName.setText(null);
-		tfID.setText(null);
+		tfId.setText(null);
 		tfTel.setText(null);
 		tfGender.setText(null);
 		tfAge.setText(null);

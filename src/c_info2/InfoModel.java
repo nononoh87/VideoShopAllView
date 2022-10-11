@@ -24,7 +24,7 @@ public interface InfoModel {
 	 * 전화번호를 넘겨받아 해당하는 사람의 정보를 삭제
 	 */
 	int delete(String tel) throws SQLException;
-	int modify(InfoVO vo) throws SQLException;
+	void modify(InfoVO vo) throws SQLException;
 	
 
 }
