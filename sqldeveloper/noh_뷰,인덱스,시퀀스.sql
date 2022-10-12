@@ -92,9 +92,12 @@ DESC EMP;
 --[ 참고 ] rowid 확인
 --  select empno, ename, job, rowid from emp;
 -- [참고] hr계정
+------------------------------------------------------------------------------
 
+CREATE sequence seq_vno;
 
-    
+SELECT seq_vno.NEXTVAL FROM dual;
+SELECT seq_vno.CURRVAL FROM dual;
     
 
 

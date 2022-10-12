@@ -47,7 +47,7 @@ public class InfoModelImpl implements InfoModel { // implements : 부모의 메�
 			ps.setString(6, vo.getHome());
 
 			// 5. 전송
-			ps.executeUpdate();
+			ps.executeUpdate();	// INSERT / DELETE / UPDATE 관련 구문에서는 반영된 레코드의 건수를 반환합니다.
 
 		} finally {
 			// 6. 닫기 (필수) : Connection 의 갯수는 사용하는 사용자의 수보다
@@ -75,7 +75,7 @@ public class InfoModelImpl implements InfoModel { // implements : 부모의 메�
 			ps = con.prepareStatement(sql);
 
 			// 5. 전송
-			rs = ps.executeQuery();
+			rs = ps.executeQuery(); // ResultSet 객체의 값을 반환한다, 객체에 결과값을 담을 수 있다.
 
 			ArrayList<InfoVO> list = new ArrayList<InfoVO>();
 			while (rs.next()) {
@@ -109,7 +109,7 @@ public class InfoModelImpl implements InfoModel { // implements : 부모의 메�
 			con = DriverManager.getConnection(URL, USER, PASS);
 			// 3.sql 문장
 			String sql = "SELECT * FROM info_tab WHERE tel=?";
-			// 4. 정송객체 얻어오기
+			// 4. 전송객체 얻어오기
 			ps = con.prepareStatement(sql);
 			ps.setString(1, tel);
 			// 5. 전송
@@ -149,7 +149,7 @@ public class InfoModelImpl implements InfoModel { // implements : 부모의 메�
 			ps = con.prepareStatement(sql);
 			ps.setString(1, tel);
 			// 5. 전송
-			int a = ps.executeUpdate();
+			int a = ps.executeUpdate(); // INSERT / DELETE / UPDATE 관련 구문에서는 반영된 레코드의 건수를 반환합니다.
 			return a;
 
 		} finally {
@@ -179,7 +179,7 @@ public class InfoModelImpl implements InfoModel { // implements : 부모의 메�
 			ps.setString(6, vo.getTel());
 
 			// 5. 전송
-			ps.executeUpdate();
+			ps.executeUpdate(); // INSERT / DELETE / UPDATE 관련 구문에서는 반영된 레코드의 건수를 반환합니다.
 
 		} finally {
 			// 6. 닫기 (필수) : Connection 의 갯수는 사용하는 사용자의 수보다

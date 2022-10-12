@@ -42,7 +42,6 @@ public class InfoView {
 		bShow.setMnemonic('s');
 
 		bSearch = new JButton("Search");
-
 		bDelete = new JButton("Delate");
 		bCancel = new JButton("Cancel");
 		bExit = new JButton("수정하기 (alt+x)", new ImageIcon("src\\b_info2\\imgs\\3.PNG")); // ImageIcon => Icon의 자식 클래스 :
@@ -111,40 +110,47 @@ public class InfoView {
 	}
 
 	void eventProc() {
+		// bAdd 버튼이 눌렸을때
 		bAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				insertData();
-			}
-		});
-
+			} // end of actionPerformed
+		}); // end of ActionListener
+		
+		// bShow 버튼이 눌렸을때
 		bShow.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectAll();
-			}
-		});
+			} // end of actionPerformed
+		}); // end of ActionListener
 
-		// bSearch 버트이 눌렸을때
+		// bSearch 버튼이 눌렸을때
 		bSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectByTel();
-			}
-		});
+			} // end of actionPerformed
+		}); // end of ActionListener
+		
+		
 		tfTel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectByTel();
-			}
-		});
+				
+			} // end of actionPerformed
+		}); // end of ActionListener
 		bDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteByTel();
-			}
-		});
+				
+			} // end of actionPerformed
+		}); // end of ActionListener
 		bExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ModifyByTel();
+				
 				selectAll(); // 바로 수정된것이 바로 보이게끔함.
-			}
-		});
+			} // end of actionPerformed
+		}); // end of ActionListener
 		
 	}// eventProc()
 	void ModifyByTel() {
@@ -173,9 +179,9 @@ public class InfoView {
 			clearText();
 		} catch (SQLException e) {
 			ta.setText("수정 실패 :" + e.getMessage());
-			//e.printStackTrace();
-		}
-	}
+			
+		} 
+	} // end of ModifyByTel
 
 	void deleteByTel() {
 		// (1) 입력한 전화번화값 얻어오기
@@ -189,7 +195,7 @@ public class InfoView {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	} // end of deleteByTel
 
 	void selectByTel() {
 		try {
@@ -209,7 +215,7 @@ public class InfoView {
 			ta.setText("전화번호를 검색 실패 :" + ex.getMessage());
 			ex.printStackTrace();
 		}
-	}
+	} // end of selectByTel
 
 	void selectAll() {
 		try {
@@ -221,7 +227,7 @@ public class InfoView {
 		} catch (SQLException e) {
 			ta.setText("검색실패 :" + e.getMessage());
 		}
-	}
+	} // end of selectByTel
 
 	void insertData() {
 		// (1) 사용자입력값 얻어오기
@@ -249,7 +255,7 @@ public class InfoView {
 		}
 		// (4) 화면의 입력값을 지우기
 		clearText();
-	}
+	} // end of insertData
 
 	void clearText() {
 		tfName.setText(null);
