@@ -24,7 +24,7 @@ public class CustomerView extends JPanel {
 		addLayout();
 		connectDB();
 		eventProc();
-	}
+	} // CustomerView
 
 	public void eventProc() {
 		ButtonEventHandler btnHandler = new ButtonEventHandler();
@@ -34,7 +34,7 @@ public class CustomerView extends JPanel {
 		bCustModify.addActionListener(btnHandler);
 		bCustNameSearch.addActionListener(btnHandler);
 		bCustTelSearch.addActionListener(btnHandler);
-	}
+	} // eventProc
 
 	// 버튼 이벤트 핸들러 만들기
 	class ButtonEventHandler implements ActionListener {
@@ -49,9 +49,9 @@ public class CustomerView extends JPanel {
 				searchByTel(); // 전화번호 검색
 			} else if (o == bCustNameSearch) { // 이름검색
 				searchByName();
-			}
-		}
-	}// ButtonEventHandler
+			} // if~
+		} // actionPerformed
+	} // ActionListener
 
 	public void clearText() {
 		tfCustName.setText(null);
@@ -274,6 +274,6 @@ public class CustomerView extends JPanel {
 		add("Center", pRegist);
 		add("South", pSearch);
 
-	}
+	}// addLayout
 
-}
+}// CustomerView

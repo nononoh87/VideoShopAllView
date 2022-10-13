@@ -46,6 +46,7 @@ public class VideoVO {
 	public void setV_desc(String v_desc) {
 		this.v_desc = v_desc;
 	}
+
 	
 	
 	
