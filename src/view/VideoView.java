@@ -1,4 +1,4 @@
-package	 view;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -50,13 +50,13 @@ public class VideoView extends JPanel
 	VideoDao model;
 
 	//##############################################
-	//	constructor method
+	// constructor method
 	public VideoView(){
 		addLayout(); 	// 화면설계
 		initStyle();
 		eventProc();
 		connectDB();	// DB연결
-	}
+	}// VideoView
 	
 	// --------------------------------------------------------------------------------------
 	
@@ -66,8 +66,8 @@ public class VideoView extends JPanel
 		} catch (Exception e) {
 			System.out.println("비디오 관리 - 드라이버 로딩 실패" + e.getMessage());
 			e.printStackTrace();
-		}
-	}
+		}// catch
+	}// connectDB
 	
 	// --------------------------------------------------------------------------------------
 	
@@ -82,8 +82,8 @@ public class VideoView extends JPanel
 					tfInsertCount.setEditable(false);*/
 				
 				tfInsertCount.setEditable( cbMultiInsert.isSelected() );
-			}						
-		});	
+			}// actionPerformed					
+		});// addActionListener
 		
 		ButtonEventHandler btnHandler = new ButtonEventHandler();
 
@@ -110,8 +110,8 @@ public class VideoView extends JPanel
 					 
 				}catch(Exception ex){
 					System.out.println("실패 : "+ ex.getMessage());
-				}
-			}
+				}// catch
+			}// mouseClicked
 
 			private VideoVO selectByVnum(int vNum) {
 				VideoVO vo = selectByVnum(vNum);
@@ -123,9 +123,9 @@ public class VideoView extends JPanel
 				taVideoContent.setText(vo.getV_desc());
 				
 				return vo;
-			}
-		});
-	}
+			}// selectByVnum
+		});// addMouseListener
+	}// eventProc
 	
 	// --------------------------------------------------------------------------------------
 	
@@ -145,9 +145,9 @@ public class VideoView extends JPanel
 			}
 			else if(o==tfVideoSearch){
 				searchVideo();					// 비디오 검색
-			}
-		}
-	}
+			}// else if
+		}// actionPerformed
+	}// ButtonEventHandler
 	
 	// --------------------------------------------------------------------------------------
 	
@@ -158,7 +158,7 @@ public class VideoView extends JPanel
 		tfVideoActor.setText(null);
 		taVideoContent.setText(null);
 		tfInsertCount.setText(null);
-	}
+	}// clearText
 	
 	// --------------------------------------------------------------------------------------
 	
@@ -185,8 +185,8 @@ public class VideoView extends JPanel
 		}catch (Exception e) {
 			System.out.println("비디오 입고 실패"+e.getMessage());
 			e.printStackTrace();
-		}
-	}
+		}// catch
+	}// registVideo
 	
 	// --------------------------------------------------------------------------------------
 	
@@ -199,8 +199,8 @@ public class VideoView extends JPanel
 			tbModelVideo.fireTableDataChanged();
 		}catch(Exception ex) {
 			System.out.println("검색실패" + ex.getMessage());
-		}
-	}
+		}// catch
+	}// searchVideo
 	
 	// --------------------------------------------------------------------------------------
 	
@@ -218,8 +218,8 @@ public class VideoView extends JPanel
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
+		}// catch
+	}// searchByNum
 	
 	// --------------------------------------------------------------------------------------
 	
@@ -228,7 +228,7 @@ public class VideoView extends JPanel
 		tfInsertCount.setEditable(false);
 		
 		tfInsertCount.setHorizontalAlignment(JTextField.RIGHT);
-	}
+	}// initStyle
 	
 	// 수정 클릭시 - 비디오 정보 수정
 	public void modifyVideo(){
@@ -245,13 +245,11 @@ public class VideoView extends JPanel
 		
 		try {
 			model.modifyVideo(vo);
-			
-
 		} catch (Exception e) {
 			
 			e.printStackTrace();
-		}
-	}
+		}// catch
+	}// modifyVideo
 	// 삭제 클릭시 - 비디오 정보 삭제
 	public void deleteVideo(){
 		JOptionPane.showMessageDialog(null, "삭제");
@@ -404,7 +402,7 @@ public class VideoView extends JPanel
 		    public String getColumnName(int col){
 		    	return columnNames[col];
 		    }
-	}
-}
+	}// VideoTableModel
+}// VideoView
 
 

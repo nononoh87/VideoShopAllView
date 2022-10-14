@@ -67,7 +67,9 @@ public class RentDaoImpl implements RentDao {
 			con.close();
 		}
 	}
-	public void retrunVideo(int vnum) throws Exception {
+	@Override
+	public void returnVideo(int vnum) throws Exception {
+		
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
@@ -147,10 +149,4 @@ public class RentDaoImpl implements RentDao {
 		}
 		return name;
 	}
-	@Override
-	public void returnVideo(int vnum) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
